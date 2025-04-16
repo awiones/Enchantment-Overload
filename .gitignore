@@ -4,6 +4,8 @@
 # But don't ignore the src directory
 !src/
 !src/**
+!enchantment/
+!enchantment/**
 
 # Still ignore these even if they're in src
 *.class
@@ -21,3 +23,4 @@ replay_pid*
 
 # Make sure .gitignore itself is not ignored
 !.gitignore
+.qodo
