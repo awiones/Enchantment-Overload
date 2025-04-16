@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:netherite_sword"
+    },
+    "title": {
+      "text": "The Cursed Blade",
+      "color": "dark_red"
+    },
+    "description": {
+      "text": "Obtain a sword that feasts upon the life force of your enemies",
+      "color": "dark_purple"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "background": "minecraft:textures/block/stone.png"
+  },
+  "criteria": {
+    "life_steal_trigger": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "rewards": {
+    "experience": 100,
+    "function": "enchantmentoverload:play_life_steal_sound"
+  }
+}

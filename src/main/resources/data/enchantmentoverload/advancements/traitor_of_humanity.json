@@ -1,0 +1,34 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:villager_spawn_egg",
+      "nbt": "{CustomModelData:1}"
+    },
+    "title": {
+      "text": "Traitor of Humanity",
+      "color": "dark_red",
+      "bold": true
+    },
+    "description": {
+      "text": "Betray villager ancestors by slaying 50 villagers with their sacred Life Steal enchantment",
+      "color": "dark_gray",
+      "italic": true
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true,
+    "background": "minecraft:textures/block/deepslate_tiles.png"
+  },
+  "parent": "enchantmentoverload:life_steal",
+  "criteria": {
+    "kill_villagers": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [["kill_villagers"]],
+  "rewards": {
+    "experience": 666,
+    "function": "enchantmentoverload:play_traitor_sound"
+  }
+}

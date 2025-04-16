@@ -1,0 +1,23 @@
+# Ignore everything
+*
+
+# But don't ignore the src directory
+!src/
+!src/**
+
+# Still ignore these even if they're in src
+*.class
+*.log
+*.ctxt
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+hs_err_pid*
+replay_pid*
+
+# Make sure .gitignore itself is not ignored
+!.gitignore
