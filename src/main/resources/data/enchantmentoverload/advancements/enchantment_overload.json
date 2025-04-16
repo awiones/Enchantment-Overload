@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:enchanted_book"
+    },
+    "title": {
+      "text": "Welcome to Enchantment Overload",
+      "color": "gold",
+      "bold": true
+    },
+    "description": {
+      "text": "Begin your journey with the forbidden arts.",
+      "color": "yellow"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "background": "minecraft:textures/block/bookshelf.png"
+  },
+  "criteria": {
+    "join_world": {
+      "trigger": "minecraft:tick"
+    }
+  }
+}

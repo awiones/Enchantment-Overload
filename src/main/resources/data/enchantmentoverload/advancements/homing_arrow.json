@@ -1,0 +1,40 @@
+{
+  "parent": "enchantmentoverload:enchantment_overload",
+  "display": {
+    "icon": {
+      "item": "minecraft:bow"
+    },
+    "title": {
+      "text": "Homing Arrow",
+      "color": "aqua"
+    },
+    "description": {
+      "text": "Obtain a bow enchanted with Arrow Assist and unleash arrows that seek their target.",
+      "color": "gray"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "get_homing_bow": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:bow",
+            "enchantments": [
+              {
+                "enchantment": "enchantmentoverload:arrow_assist"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "function": "enchantmentoverload:play_enchantment_overload_sound"
+  }
+}

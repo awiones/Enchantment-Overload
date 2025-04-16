@@ -1,4 +1,5 @@
 {
+  "parent": "enchantmentoverload:enchantment_overload",
   "display": {
     "icon": {
       "item": "minecraft:villager_spawn_egg",
@@ -20,15 +21,25 @@
     "hidden": true,
     "background": "minecraft:textures/block/deepslate_tiles.png"
   },
-  "parent": "enchantmentoverload:life_steal",
   "criteria": {
     "kill_villagers": {
-      "trigger": "minecraft:impossible"
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "minecraft:villager"
+        },
+        "killing_blow": {
+          "is_enchanted": true,
+          "enchantments": [
+            {
+              "enchantment": "enchantmentoverload:life_steal"
+            }
+          ]
+        }
+      }
     }
   },
-  "requirements": [["kill_villagers"]],
   "rewards": {
-    "experience": 666,
     "function": "enchantmentoverload:play_traitor_sound"
   }
 }

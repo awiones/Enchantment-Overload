@@ -49,6 +49,21 @@ public class LifeStealEnchantment extends Enchantment {
         return super.getMinCost(level) + 50;
     }
 
+    @Override
+    public boolean isTradeable() {
+        return true;
+    }
+
+    @Override
+    public boolean isDiscoverable() {
+        return true;
+    }
+
+    @Override
+    public boolean isAllowedOnBooks() {
+        return true;
+    }
+
     @SubscribeEvent
     public void onLivingHurt(LivingHurtEvent event) {
         if (event.getSource().getEntity() instanceof ServerPlayer attacker) {

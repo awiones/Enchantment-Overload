@@ -1,0 +1,45 @@
+{
+  "parent": "enchantmentoverload:homing_arrow",
+  "display": {
+    "icon": {
+      "item": "minecraft:phantom_membrane"
+    },
+    "title": {
+      "text": "Sniper Instinct",
+      "color": "blue",
+      "bold": true
+    },
+    "description": {
+      "text": "Use your homing bow to slay a phantom from at least 30 blocks away.",
+      "color": "dark_aqua"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "kill_phantom_homing_bow": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "minecraft:phantom"
+        },
+        "killing_blow": {
+          "is_projectile": true,
+          "direct_entity": {
+            "type": "minecraft:arrow"
+          }
+        },
+        "distance": {
+          "absolute": {
+            "min": 30
+          }
+        }
+      }
+    }
+  },
+  "rewards": {
+    "function": "enchantmentoverload:play_sniper_instinct_reward"
+  }
+}

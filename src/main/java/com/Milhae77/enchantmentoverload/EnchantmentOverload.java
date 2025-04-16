@@ -8,6 +8,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import com.Milhae77.enchantmentoverload.init.ModEnchantments;
 import com.Milhae77.enchantmentoverload.events.VillagerKillTracker;
+import com.Milhae77.enchantmentoverload.events.ArrowAssistHandler;
 
 @Mod(EnchantmentOverload.MOD_ID)
 public class EnchantmentOverload {
@@ -19,7 +20,8 @@ public class EnchantmentOverload {
         
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.register(new VillagerKillTracker());
-        
+        MinecraftForge.EVENT_BUS.register(ArrowAssistHandler.class); // Register ArrowAssistHandler
+
         // Register command
         MinecraftForge.EVENT_BUS.addListener(this::registerCommands);
     }

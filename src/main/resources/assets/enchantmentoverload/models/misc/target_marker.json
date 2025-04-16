@@ -1,0 +1,13 @@
+{
+    "parent": "builtin/generated",
+    "textures": {
+        "layer0": "enchantmentoverload:misc/target_marker"
+    },
+    "display": {
+        "ground": {
+            "rotation": [ 0, 0, 0 ],
+            "translation": [ 0, 2, 0],
+            "scale":[ 0.5, 0.5, 0.5 ]
+        }
+    }
+}

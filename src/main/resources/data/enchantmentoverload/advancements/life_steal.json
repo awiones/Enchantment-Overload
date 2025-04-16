@@ -1,4 +1,5 @@
 {
+  "parent": "enchantmentoverload:enchantment_overload",
   "display": {
     "icon": {
       "item": "minecraft:netherite_sword"
@@ -19,11 +20,22 @@
   },
   "criteria": {
     "life_steal_trigger": {
-      "trigger": "minecraft:impossible"
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:netherite_sword",
+            "enchantments": [
+              {
+                "enchantment": "enchantmentoverload:life_steal"
+              }
+            ]
+          }
+        ]
+      }
     }
   },
   "rewards": {
-    "experience": 100,
     "function": "enchantmentoverload:play_life_steal_sound"
   }
 }
