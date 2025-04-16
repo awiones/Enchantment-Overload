@@ -1,6 +1,6 @@
 # Enchantment Overload
 
-![Enchantment Overload Logo](src/main/resources/assets/enchantmentoverload/images/logo.png)
+<img src="src/main/resources/assets/enchantmentoverload/images/logo.png" alt="Enchantment Overload Logo" width="400"/>
 
 > Enhancing your Minecraft experience with powerful new enchantments!
 
