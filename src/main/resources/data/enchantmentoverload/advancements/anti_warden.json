@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:netherite_chestplate",
+      "nbt": "{Enchantments:[{id:'enchantmentoverload:anti_warden',lvl:1}]}"
+    },
+    "title": {
+      "translate": "advancement.enchantmentoverload.anti_warden"
+    },
+    "description": {
+      "translate": "advancement.enchantmentoverload.anti_warden.desc"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "enchantmentoverload:enchantment_overload",
+  "criteria": {
+    "equipped_anti_warden": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "rewards": {
+    "experience": 100
+  }
+}

@@ -133,7 +133,9 @@ public class StructureChestCommand {
         if ("arrow_assist".startsWith(input)) {
             builder.suggest("arrow_assist", () -> "Spawns a chest with Arrow Assist enchanted book");
         }
-        // Add more enchantments here when they are added to the mod
+        if ("anti_warden".startsWith(input)) {
+            builder.suggest("anti_warden", () -> "Spawns a chest with Anti-Warden enchanted book");
+        }
         return builder.buildFuture();
     }
 
@@ -186,6 +188,10 @@ public class StructureChestCommand {
                         java.util.Map.of(ModEnchantments.ARROW_ASSIST.get(), level),
                         enchantedBook
                     );
+                    case "anti_warden" -> EnchantmentHelper.setEnchantments(
+                        java.util.Map.of(ModEnchantments.ANTI_WARDEN.get(), level),
+                        enchantedBook
+                    );
                     default -> {
                         source.sendFailure(Component.literal("Unknown enchantment: " + enchantment));
                         return 0;
@@ -229,6 +235,12 @@ public class StructureChestCommand {
             if (roll > 0.85) return 4;      // 10% chance for level 4
             if (roll > 0.70) return 3;      // 15% chance for level 3
             return 2;                       // 30% chance for level 2
+        }
+        
+        if (enchantment.equals("anti_warden")) {
+            if (roll > 0.90) return 3;      // 10% chance for level 3
+            if (roll > 0.70) return 2;      // 20% chance for level 2
+            return 1;                       // 70% chance for level 1
         }
         
         return 1; // Arrow assist is always level 1

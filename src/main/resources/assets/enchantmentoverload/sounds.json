@@ -1,0 +1,17 @@
+{
+  "wardenbane_achieve": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "enchantmentoverload:wardenbane-achive",
+        "volume": 1.0,
+        "pitch": 1.0,
+        "attenuation_distance": 32,
+        "preload": false,
+        "stream": true,
+        "weight": 1
+      }
+    ],
+    "subtitle": "subtitles.enchantmentoverload.wardenbane_achieve"
+  }
+}
