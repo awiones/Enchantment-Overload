@@ -47,29 +47,24 @@ import java.util.HashMap;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import com.Milhae77.enchantmentoverload.client.Keybinds;
 
 // Change the class annotation to handle both client and server events
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
 public class ArrowAssistHandler {
-    private static final KeyMapping ARROW_ASSIST_KEY = new KeyMapping(
-            "key.enchantmentoverload.arrow_assist", GLFW.GLFW_KEY_Z, "key.categories.gameplay");
-    private static final WeakHashMap<Player, LivingEntity> TARGETS = new WeakHashMap<>();
-    private static final WeakHashMap<LivingEntity, Player> REVERSE_TARGETS = new WeakHashMap<>();
-    private static final ResourceLocation MARKER_TEXTURE = new ResourceLocation("enchantmentoverload", "textures/misc/taget_position.png");
+    // Add back the missing static fields
+    private static final java.util.WeakHashMap<Player, LivingEntity> TARGETS = new java.util.WeakHashMap<>();
+    private static final java.util.WeakHashMap<LivingEntity, Player> REVERSE_TARGETS = new java.util.WeakHashMap<>();
+    private static final java.util.Map<AbstractArrow, LivingEntity> HOMING_ARROWS = new java.util.concurrent.ConcurrentHashMap<>();
+    private static final java.util.Map<AbstractArrow, Vec3> ARROW_BLOCKED_DIR = new java.util.HashMap<>();
+    private static final net.minecraft.resources.ResourceLocation MARKER_TEXTURE = new net.minecraft.resources.ResourceLocation("enchantmentoverload", "textures/misc/taget_position.png");
     private static boolean textureWarningShown = false;
-    // Track arrows and their targets for homing animation
-    private static final Map<AbstractArrow, LivingEntity> HOMING_ARROWS = new ConcurrentHashMap<>();
-    // Remember last blocked direction for each arrow (simple learning)
-    private static final Map<AbstractArrow, Vec3> ARROW_BLOCKED_DIR = new HashMap<>();
-
-    @SubscribeEvent
-    public static void onRegisterKeyMappings(RegisterKeyMappingsEvent event) {
-        event.register(ARROW_ASSIST_KEY);
-    }
 
     @SubscribeEvent
     public static void onKeyInput(InputEvent.Key event) {
-        if (ARROW_ASSIST_KEY.consumeClick()) {
+        if (Keybinds.ARROW_ASSIST_KEY.consumeClick()) {
             Minecraft mc = Minecraft.getInstance();
             if (mc.player == null || mc.level == null) return;
             Player player = mc.player;

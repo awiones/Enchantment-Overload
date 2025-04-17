@@ -3,6 +3,7 @@ package com.Milhae77.enchantmentoverload.init;
 import com.Milhae77.enchantmentoverload.EnchantmentOverload;
 import com.Milhae77.enchantmentoverload.enchantment.LifeStealEnchantment;
 import com.Milhae77.enchantmentoverload.enchantment.ArrowAssistEnchantment;
+import com.Milhae77.enchantmentoverload.enchantment.FireDefenseEnchantment;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -18,6 +19,9 @@ public class ModEnchantments {
 
     public static final RegistryObject<Enchantment> ARROW_ASSIST = ENCHANTMENTS.register(
         "arrow_assist", ArrowAssistEnchantment::new);
+
+    public static final RegistryObject<Enchantment> FIRE_DEFENSE = ENCHANTMENTS.register(
+        "fire_defense", FireDefenseEnchantment::new);
 
     public static void register(IEventBus eventBus) {
         ENCHANTMENTS.register(eventBus);

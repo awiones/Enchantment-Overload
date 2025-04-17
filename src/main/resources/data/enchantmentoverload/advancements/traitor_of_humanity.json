@@ -29,12 +29,24 @@
           "type": "minecraft:villager"
         },
         "killing_blow": {
-          "is_enchanted": true,
-          "enchantments": [
-            {
-              "enchantment": "enchantmentoverload:life_steal"
+          "direct_entity": {
+            "type": "minecraft:player"
+          },
+          "is_projectile": false,
+          "source_entity": {
+            "equipment": {
+              "mainhand": {
+                "enchantments": [
+                  {
+                    "enchantment": "enchantmentoverload:life_steal",
+                    "levels": {
+                      "min": 1
+                    }
+                  }
+                ]
+              }
             }
-          ]
+          }
         }
       }
     }

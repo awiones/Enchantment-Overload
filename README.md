@@ -12,10 +12,12 @@ Enchantment Overload adds a wide range of enchantments to Minecraft, making surv
 
 ## ✨ Available Enchantments
 
-| Enchantment                                 | Description                                                            |
-| ------------------------------------------- | ---------------------------------------------------------------------- |
-| [Life Steal](enchantment/life_steal.md)     | Heals the player for a fixed amount when dealing damage with a weapon. |
-| [Arrow Assist](enchantment/arrow_assist.md) | Guides arrows toward the selected target for improved accuracy.        |
+| Enchantment                                 | Description                                                                        |
+| ------------------------------------------- | ---------------------------------------------------------------------------------- |
+| [Life Steal](enchantment/life_steal.md)     | Heals the player for a fixed amount when dealing damage with a weapon.             |
+| [Arrow Assist](enchantment/arrow_assist.md) | Guides arrows toward the selected target for improved accuracy.                    |
+| [Fire Defense](enchantment/fire_defense.md) | Creates a protective fire barrier and allows charging devastating fire shockwaves. |
+| [Headlamp](enchantment/headlamp.md)         | Provides dynamic lighting that activates automatically in dark areas or at night.  |
 
 ## 📥 Installation
 

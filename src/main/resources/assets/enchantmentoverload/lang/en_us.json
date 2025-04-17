@@ -1,4 +1,8 @@
 {
-  "enchantment.enchantmentoverload.life_steal": "Life Steal",
-  "enchantment.enchantmentoverload.arrow_assist": "Arrow Assist"
+  "enchantment.enchantmentoverload.life_steal": "Life Stealing",
+  "enchantment.enchantmentoverload.arrow_assist": "Arrow Assist",
+  "enchantment.enchantmentoverload.fire_defense": "Fire Defense",
+  "key.enchantmentoverload.arrow_assist": "Lock Target",
+  "key.categories.enchantmentoverload": "Enchantment Overload",
+  "category.enchantmentoverload.name": "Enchantment Overload"
 }

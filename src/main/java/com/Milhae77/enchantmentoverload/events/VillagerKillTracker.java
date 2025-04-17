@@ -18,20 +18,25 @@ public class VillagerKillTracker {
     
     @SubscribeEvent
     public void onVillagerKill(LivingDeathEvent event) {
-        if (event.getEntity() instanceof Villager && event.getSource().getEntity() instanceof ServerPlayer player) {
-            if (EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.LIFE_STEAL.get(), player.getMainHandItem()) > 0) {
-                UUID playerId = player.getUUID();
-                int kills = villagerKills.getOrDefault(playerId, 0) + 1;
-                villagerKills.put(playerId, kills);
-                
-                if (kills >= 50) {
-                    ResourceLocation advancementId = new ResourceLocation("enchantmentoverload", "traitor_of_humanity");
-                    Advancement advancement = player.getServer().getAdvancements().getAdvancement(advancementId);
-                    if (advancement != null) {
-                        AdvancementProgress progress = player.getAdvancements().getOrStartProgress(advancement);
-                        if (!progress.isDone()) {
-                            player.getAdvancements().award(advancement, "kill_villagers");
-                        }
+        if (!(event.getEntity() instanceof Villager)) return;
+        if (!(event.getSource().getEntity() instanceof ServerPlayer player)) return;
+        
+        // Check if kill was done with Life Steal enchanted weapon
+        if (event.getSource().getDirectEntity() != event.getSource().getEntity()) return; // Reject indirect/projectile kills
+        
+        var mainHand = player.getMainHandItem();
+        if (EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.LIFE_STEAL.get(), mainHand) > 0) {
+            UUID playerId = player.getUUID();
+            int kills = villagerKills.getOrDefault(playerId, 0) + 1;
+            villagerKills.put(playerId, kills);
+            
+            if (kills >= 50) {
+                ResourceLocation advancementId = new ResourceLocation("enchantmentoverload", "traitor_of_humanity");
+                Advancement advancement = player.getServer().getAdvancements().getAdvancement(advancementId);
+                if (advancement != null) {
+                    AdvancementProgress progress = player.getAdvancements().getOrStartProgress(advancement);
+                    if (!progress.isDone()) {
+                        player.getAdvancements().award(advancement, "kill_villagers");
                     }
                 }
             }
