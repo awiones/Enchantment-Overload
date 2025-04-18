@@ -5,31 +5,33 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import java.util.*;
 
 public class DynamicLightHandler {
-    @SubscribeEvent
-    public void onWorldTick(TickEvent.LevelTickEvent event) {
-        if (event.phase != TickEvent.Phase.END) return;
-    }
+    private static final Map<UUID, BlockPos> playerLights = new HashMap<>();
 
     public static void updatePlayerLight(Player player, int enchantLevel, boolean shouldLight) {
-        if (player.level().isClientSide) return; // Only run on server side
+        if (player.level().isClientSide) return;
         
-        BlockPos pos = player.blockPosition();
+        UUID playerId = player.getUUID();
         Level level = player.level();
+        BlockPos currentPos = player.blockPosition().above();
 
-        // Remove old light if exists
-        if (level.getBlockState(pos).getBlock() == Blocks.LIGHT) {
-            level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
+        // Remove old light
+        BlockPos oldPos = playerLights.get(playerId);
+        if (oldPos != null) {
+            if (level.getBlockState(oldPos).getBlock() == Blocks.LIGHT) {
+                level.removeBlock(oldPos, false);
+            }
+            playerLights.remove(playerId);
         }
 
-        // Add new light if should be active
-        if (shouldLight) {
-            int lightLevel = Math.min(15, 7 + (enchantLevel * 3)); // Level 1: 10, Level 2: 13, Level 3: 15
+        // Add new light only if the target block is air
+        if (shouldLight && level.getBlockState(currentPos).getBlock() == Blocks.AIR) {
+            int lightLevel = Math.min(15, 7 + (enchantLevel * 3));
             BlockState lightBlock = Blocks.LIGHT.defaultBlockState();
-            level.setBlock(pos, lightBlock, 3);
+            level.setBlock(currentPos, lightBlock, 3);
+            playerLights.put(playerId, currentPos);
         }
     }
 }

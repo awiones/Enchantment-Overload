@@ -6,6 +6,7 @@ import com.Milhae77.enchantmentoverload.enchantment.ArrowAssistEnchantment;
 import com.Milhae77.enchantmentoverload.enchantment.FireDefenseEnchantment;
 import com.Milhae77.enchantmentoverload.enchantment.HeadlampEnchantment;
 import com.Milhae77.enchantmentoverload.enchantment.AntiWardenEnchantment;
+import com.Milhae77.enchantmentoverload.enchantment.CreeperEscapeEnchantment;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -30,6 +31,9 @@ public class ModEnchantments {
 
     public static final RegistryObject<Enchantment> ANTI_WARDEN = ENCHANTMENTS.register(
         "anti_warden", AntiWardenEnchantment::new);
+
+    public static final RegistryObject<Enchantment> CREEPER_ESCAPE = ENCHANTMENTS.register(
+        "creeper_escape", CreeperEscapeEnchantment::new);
 
     public static void register(IEventBus eventBus) {
         ENCHANTMENTS.register(eventBus);

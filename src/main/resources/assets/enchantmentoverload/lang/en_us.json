@@ -4,6 +4,7 @@
   "enchantment.enchantmentoverload.fire_defense": "Fire Defense",
   "enchantment.enchantmentoverload.headlamp": "Headlamp",
   "enchantment.enchantmentoverload.anti_warden": "Anti-Warden",
+  "enchantment.enchantmentoverload.creeper_escape": "Creeper Escape",
   "key.enchantmentoverload.arrow_assist": "Lock Target",
   "key.categories.enchantmentoverload": "Enchantment Overload",
   "category.enchantmentoverload.name": "Enchantment Overload",
@@ -12,6 +13,7 @@
   "enchantment.enchantmentoverload.fire_defense.desc": "Provides protection of fire and will attack hostile mobs",
   "enchantment.enchantmentoverload.headlamp.desc": "Creates light around you in dark areas",
   "enchantment.enchantmentoverload.anti_warden.desc": "Long ago someone created this enchantment for the chosen one... but he's gone before the chosen came to this world",
+  "enchantment.enchantmentoverload.creeper_escape.desc": "Launches you away from exploding creepers to safety",
   "advancement.enchantmentoverload.anti_warden": "Warden's Bane",
   "advancement.enchantmentoverload.anti_warden.desc": "Long ago, someone created this enchantment for the Chosen One... but he was gone before the Chosen arrived in this world",
   "subtitles.enchantmentoverload.wardenbane_achieve": "Anti-Warden activates"

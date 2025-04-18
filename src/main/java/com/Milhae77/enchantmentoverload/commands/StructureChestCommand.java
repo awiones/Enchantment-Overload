@@ -136,6 +136,9 @@ public class StructureChestCommand {
         if ("anti_warden".startsWith(input)) {
             builder.suggest("anti_warden", () -> "Spawns a chest with Anti-Warden enchanted book");
         }
+        if ("creeper_escape".startsWith(input)) {
+            builder.suggest("creeper_escape", () -> "Spawns a chest with Creeper Escape enchanted book");
+        }
         return builder.buildFuture();
     }
 
@@ -190,6 +193,10 @@ public class StructureChestCommand {
                     );
                     case "anti_warden" -> EnchantmentHelper.setEnchantments(
                         java.util.Map.of(ModEnchantments.ANTI_WARDEN.get(), level),
+                        enchantedBook
+                    );
+                    case "creeper_escape" -> EnchantmentHelper.setEnchantments(
+                        java.util.Map.of(ModEnchantments.CREEPER_ESCAPE.get(), level),
                         enchantedBook
                     );
                     default -> {

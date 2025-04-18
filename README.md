@@ -12,13 +12,14 @@ Enchantment Overload adds a wide range of enchantments to Minecraft, making surv
 
 ## ✨ Available Enchantments
 
-| Enchantment                                 | Description                                                                        |
-| ------------------------------------------- | ---------------------------------------------------------------------------------- |
-| [Life Steal](enchantment/life_steal.md)     | Heals the player for a fixed amount when dealing damage with a weapon.             |
-| [Arrow Assist](enchantment/arrow_assist.md) | Guides arrows toward the selected target for improved accuracy.                    |
-| [Fire Defense](enchantment/fire_defense.md) | Creates a protective fire barrier and allows charging devastating fire shockwaves. |
-| [Headlamp](enchantment/headlamp.md)         | Provides dynamic lighting that activates automatically in dark areas or at night.  |
-| [Anti-Warden](enchantment/anti_warden.md)   | Ancient protection against the Warden, reducing its damage by up to 45%.           |
+| Enchantment                                     | Description                                                                        |
+| ----------------------------------------------- | ---------------------------------------------------------------------------------- |
+| [Life Steal](enchantment/life_steal.md)         | Heals the player for a fixed amount when dealing damage with a weapon.             |
+| [Arrow Assist](enchantment/arrow_assist.md)     | Guides arrows toward the selected target for improved accuracy.                    |
+| [Fire Defense](enchantment/fire_defense.md)     | Creates a protective fire barrier and allows charging devastating fire shockwaves. |
+| [Headlamp](enchantment/headlamp.md)             | Provides dynamic lighting that activates automatically in dark areas or at night.  |
+| [Anti-Warden](enchantment/anti_warden.md)       | Ancient protection against the Warden, reducing its damage by up to 45%.           |
+| [Creeper Escape](enchantment/creeper_escape.md) | Automatically launches the player to safety when a creeper is about to explode.    |
 
 ## 📥 Installation
 
