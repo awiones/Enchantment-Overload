@@ -14,6 +14,10 @@
   "enchantment.enchantmentoverload.headlamp.desc": "Creates light around you in dark areas",
   "enchantment.enchantmentoverload.anti_warden.desc": "Long ago someone created this enchantment for the chosen one... but he's gone before the chosen came to this world",
   "enchantment.enchantmentoverload.creeper_escape.desc": "Launches you away from exploding creepers to safety",
+  "enchantment.enchantmentoverload.voidbite": "Voidbite: Rift Step",
+  "enchantment.enchantmentoverload.voidbite.desc": "Critical hits have a chance to teleport your enemy behind you",
+  "enchantment.enchantmentoverload.freeze": "Freeze",
+  "enchantment.enchantmentoverload.freeze.desc": "Arrows freeze hit targets and encase them in ice",
   "advancement.enchantmentoverload.anti_warden": "Warden's Bane",
   "advancement.enchantmentoverload.anti_warden.desc": "Long ago, someone created this enchantment for the Chosen One... but he was gone before the Chosen arrived in this world",
   "subtitles.enchantmentoverload.wardenbane_achieve": "Anti-Warden activates"

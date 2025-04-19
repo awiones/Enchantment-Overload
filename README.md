@@ -20,6 +20,7 @@ Enchantment Overload adds a wide range of enchantments to Minecraft, making surv
 | [Headlamp](enchantment/headlamp.md)             | Provides dynamic lighting that activates automatically in dark areas or at night.  |
 | [Anti-Warden](enchantment/anti_warden.md)       | Ancient protection against the Warden, reducing its damage by up to 45%.           |
 | [Creeper Escape](enchantment/creeper_escape.md) | Automatically launches the player to safety when a creeper is about to explode.    |
+| [Freeze](enchantment/freeze.md)                 | Arrows freeze hit targets and encase them in ice, immobilizing them temporarily.   |
 
 ## 📥 Installation
 

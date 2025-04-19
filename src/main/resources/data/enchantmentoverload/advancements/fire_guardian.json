@@ -1,0 +1,77 @@
+{
+  "parent": "enchantmentoverload:enchantment_overload",
+  "display": {
+    "icon": {
+      "item": "minecraft:netherite_chestplate"
+    },
+    "title": {
+      "text": "Fire Guardian",
+      "color": "gold"
+    },
+    "description": {
+      "text": "Obtain a full set of armor enchanted with Fire Defense.",
+      "color": "red"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "helmet": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:netherite_helmet",
+            "enchantments": [
+              { "enchantment": "enchantmentoverload:fire_defense" }
+            ]
+          }
+        ]
+      }
+    },
+    "chestplate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:netherite_chestplate",
+            "enchantments": [
+              { "enchantment": "enchantmentoverload:fire_defense" }
+            ]
+          }
+        ]
+      }
+    },
+    "leggings": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:netherite_leggings",
+            "enchantments": [
+              { "enchantment": "enchantmentoverload:fire_defense" }
+            ]
+          }
+        ]
+      }
+    },
+    "boots": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:netherite_boots",
+            "enchantments": [
+              { "enchantment": "enchantmentoverload:fire_defense" }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    ["helmet", "chestplate", "leggings", "boots"]
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "parent": "enchantmentoverload:enchantment_overload",
+  "display": {
+    "icon": {
+      "item": "minecraft:trident"
+    },
+    "title": {
+      "text": "I'm Behind You"
+    },
+    "description": {
+      "text": "Use the Voidbite enchantment to teleport behind an enemy."
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "voidbite_teleport": {
+      "trigger": "minecraft:player_hurt_entity",
+      "conditions": {
+        "player": {
+          "equipment": {
+            "mainhand": {
+              "item": "minecraft:trident",
+              "enchantments": [
+                {
+                  "enchantment": "enchantmentoverload:voidbite"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}
