@@ -18,6 +18,8 @@
   "enchantment.enchantmentoverload.voidbite.desc": "Critical hits have a chance to teleport your enemy behind you",
   "enchantment.enchantmentoverload.freeze": "Freeze",
   "enchantment.enchantmentoverload.freeze.desc": "Arrows freeze hit targets and encase them in ice",
+  "enchantment.enchantmentoverload.enderman_glares": "Enderman Glares",
+  "enchantment.enchantmentoverload.enderman_glares.desc": "Sneak while looking at entities to teleport behind them",
   "advancement.enchantmentoverload.anti_warden": "Warden's Bane",
   "advancement.enchantmentoverload.anti_warden.desc": "Long ago, someone created this enchantment for the Chosen One... but he was gone before the Chosen arrived in this world",
   "subtitles.enchantmentoverload.wardenbane_achieve": "Anti-Warden activates"

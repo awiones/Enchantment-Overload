@@ -9,6 +9,7 @@ import com.Milhae77.enchantmentoverload.enchantment.AntiWardenEnchantment;
 import com.Milhae77.enchantmentoverload.enchantment.CreeperEscapeEnchantment;
 import com.Milhae77.enchantmentoverload.enchantment.VoidbiteEnchantment;
 import com.Milhae77.enchantmentoverload.enchantment.FreezeEnchantment;
+import com.Milhae77.enchantmentoverload.enchantment.EndermanGlaresEnchantment;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -43,6 +44,9 @@ public class ModEnchantments {
         // Register Freeze enchantment
         public static final RegistryObject<Enchantment> FREEZE = ENCHANTMENTS.register(
                         "freeze", FreezeEnchantment::new);
+
+        public static final RegistryObject<Enchantment> ENDERMAN_GLARES = ENCHANTMENTS.register(
+                        "enderman_glares", EndermanGlaresEnchantment::new);
 
         public static void register(IEventBus eventBus) {
                 ENCHANTMENTS.register(eventBus);
