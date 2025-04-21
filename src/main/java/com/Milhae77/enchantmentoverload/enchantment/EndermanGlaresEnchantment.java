@@ -66,17 +66,13 @@ public class EndermanGlaresEnchantment extends Enchantment {
         Level level = player.level();
         UUID playerId = player.getUUID();
 
-        // Debug: Check if event is triggered
-        player.displayClientMessage(Component.literal("§eTrying to teleport..."), true);
-
+        // Remove debug: Only proceed if sneaking and has enchantment
         if (!player.isCrouching()) {
-            player.displayClientMessage(Component.literal("§cNot sneaking!"), true);
             return;
         }
 
         int enchLevel = player.getItemBySlot(EquipmentSlot.HEAD).getEnchantmentLevel(this);
         if (enchLevel <= 0) {
-            player.displayClientMessage(Component.literal("§cNo Enderman Glares enchantment found!"), true);
             return;
         }
 

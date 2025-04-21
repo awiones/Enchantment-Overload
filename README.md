@@ -22,6 +22,7 @@ Enchantment Overload adds a wide range of enchantments to Minecraft, making surv
 | [Creeper Escape](enchantment/creeper_escape.md)   | Automatically launches the player to safety when a creeper is about to explode.    |
 | [Freeze](enchantment/freeze.md)                   | Arrows freeze hit targets and encase them in ice, immobilizing them temporarily.   |
 | [Enderman Glares](enchantment/enderman_glares.md) | Teleports you behind entities by sneaking and left-clicking while looking at them. |
+| [Schizoprenia](enchantment/schizoprenia.md)       | Causes fake chat and system messages, creating paranoia for the wearer.            |
 
 ## 📥 Installation
 
