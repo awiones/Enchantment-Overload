@@ -1,5 +1,6 @@
 package com.Milhae77.enchantmentoverload.enchantment;
 
+import com.mojang.authlib.GameProfile;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
@@ -29,6 +30,9 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.level.GameRules;
+import net.minecraftforge.common.util.FakePlayer;
+import net.minecraftforge.common.util.FakePlayerFactory;
+import net.minecraft.resources.ResourceLocation;
 
 import java.util.Random;
 import java.util.UUID;
@@ -284,106 +288,103 @@ public class SchizopreniaEnchantment extends Enchantment {
             clone.setYRot(yRot);
 
             // Check if player is getting too close
-            double distSq = player.distanceToSqr(clone);
-            if (distSq < CLONE_VANISH_DISTANCE * CLONE_VANISH_DISTANCE) {
-                // Player got too close, disappear with particles
-                if (!cloneData.hasSpawnedParticles) {
-                    cloneData.hasSpawnedParticles = true;
-
-                    if (player instanceof ServerPlayer serverPlayer
-                            && clone.level() instanceof ServerLevel serverLevel) {
-                        // Create smoke effect when clone vanishes
-                        serverLevel.sendParticles(
-                                serverPlayer,
-                                ParticleTypes.LARGE_SMOKE,
-                                true,
-                                clone.getX(), clone.getY() + 1.0, clone.getZ(),
-                                20, 0.2, 0.5, 0.2, 0.02);
-                    }
-
-                    // Send creepy message
-                    player.sendSystemMessage(Component.literal("§7You blinked... and it was gone"));
-
-                    // Remove clone
-                    clone.discard();
-                    playerCloneMap.remove(uuid);
+            // double distSq = player.distanceToSqr(clone);
+            // if (distSq < 0.25) { // Only vanish if player is within 0.5 blocks (0.5^2 =
+            // 0.25)
+            // // Player got too close, disappear with particles
+            // if (!cloneData.hasSpawnedParticles) {
+            // cloneData.hasSpawnedParticles = true;
+            //
+            // if (player instanceof ServerPlayer serverPlayer
+            // && clone.level() instanceof ServerLevel serverLevel) {
+            // // Create smoke effect when clone vanishes
+            // serverLevel.sendParticles(
+            // serverPlayer,
+            // ParticleTypes.LARGE_SMOKE,
+            // true,
+            // clone.getX(), clone.getY() + 1.0, clone.getZ(),
+            // 20, 0.2, 0.5, 0.2, 0.02);
+            // }
+            //
+            // // Send creepy message
+            // player.sendSystemMessage(Component.literal("§7You blinked... and it was
+            // gone"));
+            //
+            // // Remove clone
+            // clone.discard();
+            // playerCloneMap.remove(uuid);
+            // }
+            // } else {
+            // Decrement time left for clone
+            cloneData.ticksLeft--;
+            if (cloneData.ticksLeft <= 0) {
+                // Time ran out, remove clone
+                if (player instanceof ServerPlayer serverPlayer
+                        && clone.level() instanceof ServerLevel serverLevel) {
+                    // Create smoke effect when clone vanishes
+                    serverLevel.sendParticles(
+                            serverPlayer,
+                            ParticleTypes.LARGE_SMOKE,
+                            true,
+                            clone.getX(), clone.getY() + 1.0, clone.getZ(),
+                            20, 0.2, 0.5, 0.2, 0.02);
                 }
-            } else {
-                // Decrement time left for clone
-                cloneData.ticksLeft--;
-                if (cloneData.ticksLeft <= 0) {
-                    // Time ran out, remove clone
-                    if (player instanceof ServerPlayer serverPlayer
-                            && clone.level() instanceof ServerLevel serverLevel) {
-                        // Create smoke effect when clone vanishes
-                        serverLevel.sendParticles(
-                                serverPlayer,
-                                ParticleTypes.LARGE_SMOKE,
-                                true,
-                                clone.getX(), clone.getY() + 1.0, clone.getZ(),
-                                20, 0.2, 0.5, 0.2, 0.02);
-                    }
 
-                    clone.discard();
-                    playerCloneMap.remove(uuid);
-                }
+                clone.discard();
+                playerCloneMap.remove(uuid);
             }
+            // }
         }
         // Spawn new clone
-        else if (random.nextInt(CLONE_SPAWN_CHANCE) == 0 && player instanceof ServerPlayer serverPlayer) {
-            // Find a position behind the player to spawn clone
+        else if (!(playerCloneMap.containsKey(uuid)) && player instanceof ServerPlayer serverPlayer) {
             Vec3 playerPos = player.position();
             Vec3 lookVec = player.getLookAngle();
 
-            // Position behind player (opposite of where they're looking)
-            double spawnDist = 8.0 + random.nextDouble() * 4.0; // 8-12 blocks away
-            double spawnX = playerPos.x - lookVec.x * spawnDist + (random.nextDouble() - 0.5) * 5.0;
+            double spawnDist = 15.0;
+            double spawnX = playerPos.x - lookVec.x * spawnDist;
             double spawnY = playerPos.y;
-            double spawnZ = playerPos.z - lookVec.z * spawnDist + (random.nextDouble() - 0.5) * 5.0;
+            double spawnZ = playerPos.z - lookVec.z * spawnDist;
 
-            // Create clone
-            createPlayerClone(serverPlayer, spawnX, spawnY, spawnZ);
+            player.sendSystemMessage(Component
+                    .literal("[DEBUG] Attempting to spawn player clone at: " + spawnX + ", " + spawnY + ", " + spawnZ));
+
+            ServerLevel level = serverPlayer.serverLevel();
+
+            // Create a zombie that looks like a player
+            Zombie clone = new Zombie(level);
+            clone.setPos(spawnX, spawnY, spawnZ);
+            clone.setYRot(player.getYRot());
+            clone.setXRot(player.getXRot());
+            clone.setNoAi(true); // Prevent movement
+            clone.setInvulnerable(true);
+            clone.setSilent(true);
+            clone.setCustomName(Component.literal("SchizoClone"));
+            clone.setCustomNameVisible(false);
+
+            // Copy player's armor and held items
+            for (EquipmentSlot slot : EquipmentSlot.values()) {
+                clone.setItemSlot(slot, player.getItemBySlot(slot).copy());
+            }
+
+            // Make the zombie look like a player (baby zombies are player-sized)
+            clone.setBaby(true);
+            clone.setNoAi(true);
+
+            // Add the clone to the world
+            level.addFreshEntity(clone);
+
+            // Store clone data
+            playerCloneMap.put(player.getUUID(), new CloneData(clone, CLONE_DURATION));
+            player.sendSystemMessage(Component.literal("§7Did you... just see yourself?"));
+
+            // Spawn particles
+            level.sendParticles(
+                    serverPlayer,
+                    ParticleTypes.LARGE_SMOKE,
+                    true,
+                    spawnX, spawnY + 1.0, spawnZ,
+                    15, 0.2, 0.5, 0.2, 0.02);
         }
-    }
-
-    private void createPlayerClone(ServerPlayer player, double x, double y, double z) {
-        ServerLevel level = player.serverLevel();
-
-        // Create an armor stand as the "clone"
-        ArmorStand clone = new ArmorStand(level, x, y, z);
-        clone.setNoGravity(true);
-        clone.setInvisible(true); // Make base entity invisible
-        clone.setInvulnerable(true);
-        clone.setSilent(true);
-        clone.setCustomName(Component.literal(player.getName().getString())); // Same name
-        clone.setCustomNameVisible(false);
-
-        // Copy player's equipment to clone (all slots)
-        for (EquipmentSlot slot : EquipmentSlot.values()) {
-            clone.setItemSlot(slot, player.getItemBySlot(slot).copy());
-        }
-
-        // Make sure the clone faces the player initially
-        Vec3 playerPos = player.position();
-        double dx = playerPos.x - x;
-        double dz = playerPos.z - z;
-        float yRot = (float) Math.toDegrees(Math.atan2(dz, dx)) - 90.0F;
-        clone.setYRot(yRot);
-
-        // Spawn the clone with particles
-        level.addFreshEntity(clone);
-
-        // Create smoke effect when clone appears
-        level.sendParticles(
-                player,
-                ParticleTypes.LARGE_SMOKE,
-                true,
-                x, y + 1.0, z,
-                15, 0.2, 0.5, 0.2, 0.02);
-
-        // Store clone data and send creepy message to player
-        playerCloneMap.put(player.getUUID(), new CloneData(clone, CLONE_DURATION));
-        player.sendSystemMessage(Component.literal("§7Did you... just see yourself?"));
     }
 
     private void generateHallucinationMessage(Player player, UUID uuid) {
